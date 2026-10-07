@@ -156,6 +156,17 @@ em {
     letter-spacing:-.03em
 }
 
+.logo img {
+    display: block;
+    height: 9rem;
+    width: auto;
+    transition: height .4s var(--ease)
+}
+
+#hd.solid .logo img {
+    height: 7.5rem
+}
+
 #nav {
     display:flex;
     gap:2rem;
@@ -1072,6 +1083,15 @@ footer .sun {
 
 /* responsivo */
 @media(max-width:860px) {
+
+    .logo img {
+    height: 5rem
+    }
+
+    #hd.solid .logo img {
+    height: 4rem
+    }
+
     .cta {
         display:none
     }
