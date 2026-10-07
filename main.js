@@ -33,7 +33,6 @@ $('#grid').innerHTML = PROJECTS.map((p, i) => {
  <h3>${esc(p.brand)}<svg viewBox="0 0 60 24" aria-hidden="true"><use href="#arw" pathLength="1"/></svg></h3>
  <p class="meta">${p.segment.startsWith('[') ? `<i>${esc(p.segment)}</i>` : esc(p.segment)} · ${p.service.startsWith('[') ? `<i>${esc(p.service)}</i>` : esc(p.service)}</p>${p.description ? `<p class="meta">${esc(p.description)}</p>` : ''}</article>`
 }).join('')
-    + '<p class="vnote">Vitrine em construção: as peças dos clientes entram com a identidade deles, a Solanas fica só na moldura.</p>';
 /* Clientes: lista duplicada para o loop; cópia escondida de leitores de tela */
 const lst = a => `<ul${a ? ' aria-hidden="true"' : ''}>${CLIENTS.map(c => `<li>${esc(c)}</li>`).join('')}</ul>`;
 $('#mq').innerHTML = lst(0) + lst(1);
