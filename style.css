@@ -1085,11 +1085,11 @@ footer .sun {
 @media(max-width:860px) {
 
     .logo img {
-    height: 5rem
+    height: 8cm
     }
 
     #hd.solid .logo img {
-    height: 4rem
+    height: 7rem
     }
 
     .cta {
