@@ -2,20 +2,20 @@
 /* FONTES OFICIAIS: colocar os arquivos em /fonts. Sem eles, entram os fallbacks (Georgia / Helvetica). */
 @font-face {
     font-family:"Freight Display Pro";
-    src:local("Freight Display Pro"),local("FreightDispPro-Medium"),url(../fonts/FreightDisplayPro-Medium.woff2) format("woff2");
+    src:local("Freight Display Pro"),local("FreightDispPro-Medium"),url(./fonts/FreightDisplayPro-Medium.woff2) format("woff2");
     font-display:swap
 }
 
 @font-face {
     font-family:"Freight Display Pro";
     font-style:italic;
-    src:local("Freight Display Pro Italic"),url(../fonts/FreightDisplayPro-MediumItalic.woff2) format("woff2");
+    src:local("Freight Display Pro Italic"),url(./fonts/FreightDisplayPro-MediumItalic.woff2) format("woff2");
     font-display:swap
 }
 
 @font-face {
     font-family:"Neue Haas Grotesk";
-    src:local("Neue Haas Grotesk Text Pro"),local("NeueHaasGroteskText"),url(../fonts/NeueHaasGrotesk-Text.woff2) format("woff2");
+    src:local("Neue Haas Grotesk Text Pro"),local("NeueHaasGroteskText"),url(./fonts/NeueHaasGrotesk-Text.woff2) format("woff2");
     font-display:swap
 }
 

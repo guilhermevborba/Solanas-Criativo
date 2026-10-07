@@ -1,15 +1,34 @@
 /* Solanas — comportamento. Conteúdo editável: CONFIG, PROJECTS e CLIENTS no topo. */
 document.documentElement.classList.add('js');
 /* ===== Conteúdo editável ===== */
-const CONFIG = { email: "solanas.criativo@gmail.com.br", whatsapp: "(51) 98013-0077", instagram: "solanas.criativo" };
+const CONFIG = { email: "solanas.criativo@gmail.com", whatsapp: "5551980130077", instagram: "solanas.criativo" };
 const PROJECTS = [ // ordem do array = ordem na página. featured:true destaca. cover/images/videos: caminhos dos arquivos reais
-    { slug: "eat-kitchen", brand: "EAT Kitchen", tone: "yellow", featured: true },
-    { slug: "gabi-angonese", brand: "Gabi Angonese Arquitetura", tone: "blue" },
-    { slug: "reveillon-punta", brand: "Réveillon Punta", tone: "orange" },
-    { slug: "sulina", brand: "Sulina Iluminações", tone: "green" },
-    { slug: "di-lingeries", brand: "Unnie Obras", tone: "pink" },
-    { slug: "circuito-arq", brand: "re.sí Atelier", tone: "black", featured: true }
+    {
+        slug: "eat-kitchen", brand: "EAT Kitchen", tone: "yellow", featured: true,
+        segment: "Gastronomia"
+    },
+    {
+        slug: "gabi-angonese", brand: "Gabi Angonese", tone: "blue",
+        segment: "Arquitetura"
+    },
+    {
+        slug: "reveillon-punta", brand: "Réveillon Punta", tone: "orange",
+        segment: "Eventos"
+    },
+    {
+        slug: "sulina", brand: "Sulina Iluminações", tone: "green",
+        segment: "Iluminação"
+    },
+    {
+        slug: "unnie-obras", brand: "Unnie Obras", tone: "pink",
+        segment: "Gestão de Obras"
+    },
+    {
+        slug: "resi-atelier", brand: "re.sí ateliê", tone: "black", featured: true,
+        segment: "Moda"
+    }
 ].map(p => ({ segment: "[segmento — confirmar]", service: "[tipo de trabalho — confirmar]", cover: null, images: [], videos: [], description: "", ...p }));
+
 const CLIENTS = ["@eusouoabu", "@dilingeries", "@drclaudioalba", "@eatkitchengram", "@elisgarcezinteriores", "@arquiteta_elisa_martins", "@essenciadocuidarestetica", "@gabiangonese", "@gabrielamarkus", "@nathaliahoffmann", "@paulamaltz.adv", "@petitroyal.store", "@re.si.atelie", "@reveillonpunta", "@rimaz.arqdesign", "@smconcept", "@sulinailuminacao", "@unnieobras", "@vdc.advogados", "@zaninicarnes"];
 /* ===== Utilidades ===== */
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -24,15 +43,34 @@ function sun(v, n) {
     return `<svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">${s}</svg>`
 }
 /* Portfólio */
+
+/* Portfólio */
 $('#grid').innerHTML = PROJECTS.map((p, i) => {
-    const t = p.tone; const bg = `var(--solanas-${t})`;
-    const media = p.videos[0] ? `<video data-src="${esc(p.videos[0])}" ${p.cover ? `poster="${esc(p.cover)}"` : ''} muted loop playsinline preload="none" aria-label="Vídeo ${esc(p.brand)}"></video>`
-        : p.cover ? `<img src="${esc(p.cover)}" alt="Trabalho da Solanas para ${esc(p.brand)}" loading="lazy">`
+    const bg = `var(--solanas-${p.tone})`;
+    const media = p.videos[0]
+        ? `<video data-src="${esc(p.videos[0])}" ${p.cover ? `poster="${esc(p.cover)}"` : ''} muted loop playsinline preload="none" aria-label="Vídeo ${esc(p.brand)}"></video>`
+        : p.cover
+            ? `<img src="${esc(p.cover)}" alt="Trabalho da Solanas para ${esc(p.brand)}" loading="lazy">`
             : `<i class="sun" data-v="${'abc'[i % 3]}" data-n="${12 + i * 2}"></i><em>[capa do projeto — adicionar]</em>`;
-    return `<article class="proj l${i % 6}${p.featured ? ' feat' : ''}" style="--t:${bg}" tabindex="0" data-r><div class="ph" ${t == 'black' ? 'style="color:#F1E7DA"' : ''}>${media}</div>
- <h3>${esc(p.brand)}<svg viewBox="0 0 60 24" aria-hidden="true"><use href="#arw" pathLength="1"/></svg></h3>
- <p class="meta">${p.segment.startsWith('[') ? `<i>${esc(p.segment)}</i>` : esc(p.segment)} · ${p.service.startsWith('[') ? `<i>${esc(p.service)}</i>` : esc(p.service)}</p>${p.description ? `<p class="meta">${esc(p.description)}</p>` : ''}</article>`
-}).join('')
+    const segment = p.segment.startsWith('[') ? `<i>${esc(p.segment)}</i>` : esc(p.segment);
+    return `<article class="proj l${i % 6}${p.featured ? ' feat' : ''}" style="--t:${bg}" tabindex="0" data-r>
+        <div class="ph" ${p.tone == 'black' ? 'style="color:#F1E7DA"' : ''}>${media}</div>
+        <h3>${esc(p.brand)}<svg viewBox="0 0 60 24" aria-hidden="true"><use href="#arw" pathLength="1"/></svg></h3>
+        <p class="meta">${segment}</p>${p.description ? `<p class="meta">${esc(p.description)}</p>` : ''}
+    </article>`;
+}).join('');
+
+
+// $('#grid').innerHTML = PROJECTS.map((p, i) => {
+//     const t = p.tone; const bg = `var(--solanas-${t})`;
+//     const media = p.videos[0] ? `<video data-src="${esc(p.videos[0])}" ${p.cover ? `poster="${esc(p.cover)}"` : ''} muted loop playsinline preload="none" aria-label="Vídeo ${esc(p.brand)}"></video>`
+//         : p.cover ? `<img src="${esc(p.cover)}" alt="Trabalho da Solanas para ${esc(p.brand)}" loading="lazy">`
+//             : `<i class="sun" data-v="${'abc'[i % 3]}" data-n="${12 + i * 2}"></i><em>[capa do projeto — adicionar]</em>`;
+//     return `<article class="proj l${i % 6}${p.featured ? ' feat' : ''}" style="--t:${bg}" tabindex="0" data-r><div class="ph" ${t == 'black' ? 'style="color:#F1E7DA"' : ''}>${media}</div>
+//  <h3>${esc(p.brand)}<svg viewBox="0 0 60 24" aria-hidden="true"><use href="#arw" pathLength="1"/></svg></h3>
+//  <p class="meta">${p.segment.startsWith('[') ? `<i>${esc(p.segment)}</i>` : esc(p.segment)} · ${p.service.startsWith('[') ? `<i>${esc(p.service)}</i>` : esc(p.service)}</p>${p.description ? `<p class="meta">${esc(p.description)}</p>` : ''}</article>`
+// }).join('')
+
 /* Clientes: lista duplicada para o loop; cópia escondida de leitores de tela */
 const lst = a => `<ul${a ? ' aria-hidden="true"' : ''}>${CLIENTS.map(c => `<li>${esc(c)}</li>`).join('')}</ul>`;
 $('#mq').innerHTML = lst(0) + lst(1);
@@ -43,7 +81,20 @@ if (CONFIG.instagram) $('#finsta').innerHTML = `<a href="https://instagram.com/$
 $('#yr').textContent = new Date().getFullYear();
 $('#f').onsubmit = e => {
     e.preventDefault(); const d = Object.fromEntries(new FormData(e.target));
-    const t = `Oi, Solanas!\nNome: ${d.nome}\nMarca: ${d.marca}\nInstagram ou site: ${d.link}\nContato: ${d.contato}\n\n${d.msg}`;
+    const t = `Oi, Solanas!
+
+        Quero bater um papo com vocês sobre a minha marca.
+
+        *Meu nome:* ${d.nome}
+        *Minha marca:* ${d.marca}
+        *Instagram ou site:* ${d.link}
+        *Contato:* ${d.contato}
+
+        *Um pouco sobre o que estou buscando:*
+        ${d.msg}
+
+        Vamos conversar?`;
+    // const t = `Oi, Solanas!\nNome: ${d.nome}\nMarca: ${d.marca}\nInstagram ou site: ${d.link}\nContato: ${d.contato}\n\n${d.msg}`;
     location.href = CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}` : `mailto:${CONFIG.email}?subject=${encodeURIComponent('Vem bater um papo')}&body=${encodeURIComponent(t)}`
 };
 /* Menu mobile */
