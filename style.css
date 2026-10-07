@@ -371,7 +371,7 @@ em {
 /* manifesto */
 .tall {
     padding: 0;
-    height: 330vh;
+    height: 240vh;
     overflow: visible
 }
 
@@ -1246,19 +1246,7 @@ footer .sun {
     .l4,
     .l5 {
         grid-column: 1/-1;
-        margin-top: 0
-    }
-
-    .l1,
-    .l3,
-    .l5 {
-        width: 84%;
-        margin-left: auto
-    }
-
-    .l0,
-    .l2,
-    .l4 {
+        margin: 0 auto;
         width: 92%
     }
 
