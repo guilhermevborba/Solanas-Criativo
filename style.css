@@ -393,23 +393,23 @@ em {
 }
 
 .stick p {
-    position:absolute;
-    font:500 clamp(2.6rem,9.4vw,10.5rem)/.92 var(--serif);
-    letter-spacing:-.03em;
-    max-width:11ch
+    position: absolute;
+    font: 500 clamp(2.4rem, min(8.4vw, 12.5vh), 10.5rem)/.92 var(--serif);
+    letter-spacing: -.03em;
+    max-width: 14ch
 }
 
 .m1 {
     left:var(--sp);
-    top:calc(env(safe-area-inset-top,0px) + 17vh);
+    top:calc(env(safe-area-inset-top,0px) + 15vh);
     opacity:calc(1 - clamp(0,(var(--p,0) - .55)*2.2,.8))
 }
 
 .m2 {
     right:var(--sp);
-    bottom:12vh;
+    bottom:10vh;
     text-align:right;
-    max-width:12ch!important;
+    max-width:15ch!important;
     opacity:clamp(0,(var(--p,0) - .38)*4,1);
     transform:translateY(calc((1 - clamp(0,(var(--p,0) - .38)*3,1))*38vh))
 }
