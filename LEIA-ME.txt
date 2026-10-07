@@ -1,0 +1,8 @@
+Colocar aqui os arquivos oficiais (woff2):
+
+FreightDisplayPro-Medium.woff2
+FreightDisplayPro-MediumItalic.woff2
+NeueHaasGrotesk-Text.woff2
+
+Sem eles, o site usa Georgia e Helvetica/Arial como reserva (nao usa Google Fonts).
+Os nomes sao os referenciados em css/style.css (@font-face); se os arquivos tiverem outro nome, ajuste la.
